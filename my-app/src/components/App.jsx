@@ -57,55 +57,35 @@ function App(){
   return (
     //pass in global variables through value
     <TodosContext.Provider value={{ todos, setTodos, idForTodo, setIdForTodo, todosFiltered, filter, setFilter }}>
-      <div className="todo-app-container">
-        <div className="todo-app">
-
-          <div class="name-container">
-            <h2>What is your name?</h2>
-            <form>
-              <input
-                type="text"
-                ref={nameInputEl}
-                className="todo-input"
-                placeholder="What is your name?"
-                value={name}
-                onChange={handleNameInput} />
-            </form>
-            <CSSTransition
-              in={name.length > 0}
-              timeout={300}
-              classNames="slide-vertical"
-              unmountOnExit
-            >
-              <p className="name-label">Hello, {name}</p>
-            </CSSTransition>
-          </div>
-          <h2>Todo App</h2>
-          <TodoForm />
-
-          <SwitchTransition mode="out-in">
-            <CSSTransition key={todos.length > 0} timeout={300} classNames="slide-vertical" unmountOnExit>
-              {todos.length > 0 ? <TodoList /> : <NoTodos />}
-            </CSSTransition>
-          </SwitchTransition>
-          {/* <CSSTransition
-            in={todos.length > 0}
-            timeout={300}
-            classNames="slide-vertical"
-            unmountOnExit
-          >
-            <TodoList />
-          </CSSTransition>
+      <div className="todo-app">
+        <div class="name-container">
+          <h2>What is your name?</h2>
+          <form>
+            <input
+              type="text"
+              ref={nameInputEl}
+              className="todo-input"
+              placeholder="What is your name?"
+              value={name}
+              onChange={handleNameInput} />
+          </form>
           <CSSTransition
-            in={todos.length === 0}
+            in={name.length > 0}
             timeout={300}
             classNames="slide-vertical"
             unmountOnExit
           >
-            <NoTodos />
-          </CSSTransition> */}
-
+            <p className="name-label">Hello, {name}</p>
+          </CSSTransition>
         </div>
+        <h2>Todo App</h2>
+        <TodoForm />
+
+        <SwitchTransition mode="out-in">
+          <CSSTransition key={todos.length > 0} timeout={300} classNames="slide-vertical" unmountOnExit>
+            {todos.length > 0 ? <TodoList /> : <NoTodos />}
+          </CSSTransition>
+        </SwitchTransition>
       </div>
     </TodosContext.Provider>
   );
