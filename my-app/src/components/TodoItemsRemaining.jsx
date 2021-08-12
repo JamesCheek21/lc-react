@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 
 function TodoItemsRemaining(props){
-  return<span>{props.remaining()} items remaining</span>
+  return<span>{props.remaining} items remaining</span>
 };
 
 TodoItemsRemaining.propTypes = {
-  remaining: PropTypes.func.isRequired,
+  remaining: PropTypes.number.isRequired,
 }
 
 export default TodoItemsRemaining;
